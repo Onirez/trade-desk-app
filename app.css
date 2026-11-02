@@ -1,7 +1,7 @@
 :root{--bg:#000;--tx:#fff;--t2:rgba(235,235,245,.6);--t3:rgba(235,235,245,.3);--sep:rgba(84,84,88,.55);
 --c1:#1c1c1e;--c2:#2c2c2e;--green:#00d35a;--red:#ff453a;--orange:#ff9f0a;--cyan:#64d2ff;--blue:#0a84ff;--yellow:#ffd60a;--pink:#ff6b9a;
 --disp:-apple-system,"SF Pro Display",BlinkMacSystemFont,system-ui,sans-serif;--text:-apple-system,"SF Pro Text",BlinkMacSystemFont,system-ui,sans-serif;
---mono:ui-monospace,"SF Mono",Menlo,monospace;--w:calc(100vw - 32px)}
+--mono:ui-monospace,"SF Mono",Menlo,monospace;--w:calc(min(100vw, 430px) - 32px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.35 var(--text);font-variant-numeric:tabular-nums}
 body{padding:env(safe-area-inset-top) 0 calc(84px + env(safe-area-inset-bottom));min-height:100vh;overflow-x:hidden}
@@ -109,3 +109,10 @@ canvas{display:block;width:100%}
 .logo{width:40px;height:40px;border-radius:20px;background:var(--c2);object-fit:cover}
 h1{font:700 28px var(--disp);margin:6px 0}
 @media (prefers-reduced-motion:reduce){.odo-s,.beam,.disc,.bar i,.switch,.switch::after{transition:none!important}.skel{animation:none}}
+/* Wide screens (desktop/tablet): the app stays a centered phone-width column; 390px phones are unchanged. */
+@media (min-width:501px){
+  html{background:#000}
+  body{max-width:430px;margin:0 auto;box-shadow:0 0 0 1px #1c1c1e}
+  .tabbar,.search,.sheet{left:calc(50% - 215px);right:calc(50% - 215px)}
+  .toast{left:calc(50% - 199px);right:calc(50% - 199px)}
+}
